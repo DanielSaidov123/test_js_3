@@ -27,11 +27,15 @@ async function init() {
       if (point === "1") {
         const url1 = `https://spies-test-server.vercel.app/people`;
         const data1 = await GetPeopleList(url1);
+        console.log(data1);
+
         saveToFilePeopel("data/PEOPLE.json", data1);
       }
       if (point === "2") {
         const url2 = `https://spies-test-server.vercel.app/transcriptions`;
         const data2 = await GetCallRecords(url2);
+        console.log(data2);
+
         saveToFileTranscriptions("data/TRANSCRIPTIONS.json", data2);
       }
       if (point === "3") {
