@@ -6,6 +6,11 @@ import {
   saveToFileTranscriptions,
   SearchPeoplebyName,
   SearchPeoplebyAge,
+  asss,
+  arrPopel,
+  findU,
+  ddd,
+  FindDangerousPeople,
 } from "./utils/utils.js";
 async function init() {
   let point = NaN;
@@ -37,6 +42,13 @@ ARRAY
       if (point === "4") {
         const age = input("enter age: ");
         console.log(await SearchPeoplebyAge(Number(age)));
+      }
+      if (point === "5") {
+        const arr = await FindDangerousPeople("data/TRANSCRIPTIONS.json");
+        const a = ddd(arr);
+        const x = await findU(a, "data/TRANSCRIPTIONS.json");
+        asss(x);
+        console.log(x);
       }
     } catch (err) {
       console.log(err);

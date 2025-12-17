@@ -85,7 +85,7 @@ export async function FindDangerousPeople(fileName) {
   return Object.entries(obj);
 }
 
-function ddd(arr) {
+export function ddd(arr) {
   const object = {};
   let count = 0;
   for (let i = 0; i < arr.length; i++) {
@@ -111,29 +111,32 @@ function ddd(arr) {
   return a;
 }
 
-async function findU(arr, fileName) {
+export async function findU(arr, fileName) {
   const list = [];
   const dataJson = await fs.readFile(fileName, "utf8");
   const dataJS = JSON.parse(dataJson);
 
   for (let i = 0; i < 3; i++) {
     for (let j = 0; j < dataJS.length; j++) {
-        const dataAge = `${dataJS[j].age}`
-        const arrAge = arr[i][0]
-      if (dataAge == arrAge ) {
+      const dataAge = `${dataJS[j].age}`;
+      const arrAge = arr[i][0];
+      if (dataAge == arrAge) {
         list.push(dataJS[j]);
       }
     }
-  } 
+  }
   return list;
 }
 
-
-
-
-async function init() {
-  const arr = await FindDangerousPeople("data/TRANSCRIPTIONS.json");
-  const a = ddd(arr);
-  console.log(await findU(a, "data/TRANSCRIPTIONS.json"));
+export async function arrPopel(obj) {
+  const res = await fetch(
+    `https://spies-test-server.vercel.app/reports/${JSON.stringify(obj)}`
+  );
+  console.log(res.json);
 }
-init();
+
+export async function asss(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    await arrPopel(arr[i]);
+  }
+}
