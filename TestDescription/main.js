@@ -8,16 +8,18 @@ import {
   SearchPeoplebyAge,
 } from "./utils/utils.js";
 async function init() {
+  let point = NaN;
   do {
     try {
-      console.log(`1. Get People List
-2 Send a request to the intelligence server - general url + “/people”
-3 Receive an array of people objects.
-4 Save only the array into a file named PEOPLE.json.
+      console.log(`1.  Get People List
+2 Get TRANSCRIPTIONS List
+3 Search People by Name
+4Search People by Age
 5 Do not save any extra text or metadata - keys, variable declarations etc. JUST THE
 ARRAY
 6 exite`);
-      const point = input("enter number: ");
+      point = input("enter number: ");
+
       if (point === "1") {
         const url1 = `https://spies-test-server.vercel.app/people`;
         const data1 = await GetPeopleList(url1);
@@ -29,17 +31,17 @@ ARRAY
         saveToFileTranscriptions("data/TRANSCRIPTIONS.json", data2);
       }
       if (point === "3") {
-        const url2 = `https://spies-test-server.vercel.app/transcriptions`;
-        const data2 = await GetCallRecords(url2);
-        saveToFileTranscriptions("data/TRANSCRIPTIONS.json", data2);
+        const name = input("enter name: ");
+        console.log(await SearchPeoplebyName(name));
       }
-
-      console.log(await SearchPeoplebyName(""));
-      console.log(await SearchPeoplebyAge(43));
+      if (point === "4") {
+        const age = input("enter age: ");
+        console.log(await SearchPeoplebyAge(Number(age)));
+      }
     } catch (err) {
       console.log(err);
     }
-  } while (point === "6");
+  } while (point !== "6");
 }
 
 init();
