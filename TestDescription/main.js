@@ -16,12 +16,11 @@ async function init() {
   let point = NaN;
   do {
     try {
-      console.log(`1.  Get People List
+      console.log(`1. Get People List
 2 Get TRANSCRIPTIONS List
 3 Search People by Name
-4Search People by Age
-5 Do not save any extra text or metadata - keys, variable declarations etc. JUST THE
-ARRAY
+4 Search People by Age
+5 The three most dangerous ages
 6 exite`);
       point = input("enter number: ");
 
