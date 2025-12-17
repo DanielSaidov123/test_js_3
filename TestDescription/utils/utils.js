@@ -34,7 +34,7 @@ export async function readFromFile(fileName) {
 }
 
 export async function SearchPeoplebyName(name) {
-  const data = await readFromFile("data/PEOPLE.json");
+  const data = await readFromFile("../data/PEOPLE.json");
   for (let i = 0; i < data.length; i++) {
     if (data[i].name === name) {
       return data[i];
@@ -115,25 +115,22 @@ async function findU(arr, fileName) {
   const list = [];
   const dataJson = await fs.readFile(fileName, "utf8");
   const dataJS = JSON.parse(dataJson);
-  
+
   for (let i = 0; i < 3; i++) {
     for (let j = 0; j < dataJS.length; j++) {
-        console.log(dataJS[j].age);
-
-      if (dataJS[j].age == arr[i][0]) {
-        console.log(dataJS[j].age);
-        
+        const dataAge = `${dataJS[j].age}`
+        const arrAge = arr[i][0]
+      if (dataAge == arrAge ) {
         list.push(dataJS[j]);
       }
     }
-  }
+  } 
   return list;
 }
 
 async function init() {
-  const arr = await FindDangerousPeople("data/TRANSCRIPTIONS.json");
-  const a=ddd(arr);
-  console.log(await findU(a,'data/PEOPLE.json'));
-  
+  const arr = await FindDangerousPeople("./testDescription/data/TRANSCRIPTIONS.json");
+  const a = ddd(arr);
+  console.log(await findU(a, "./testDescription/data/PEOPLE.json"));
 }
 init();
