@@ -115,9 +115,14 @@ async function findU(arr, fileName) {
   const list = [];
   const dataJson = await fs.readFile(fileName, "utf8");
   const dataJS = JSON.parse(dataJson);
+  
   for (let i = 0; i < 3; i++) {
     for (let j = 0; j < dataJS.length; j++) {
-      if (dataJS[j].age == arr[i][1]) {
+        console.log(dataJS[j].age);
+
+      if (dataJS[j].age == arr[i][0]) {
+        console.log(dataJS[j].age);
+        
         list.push(dataJS[j]);
       }
     }
